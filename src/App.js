@@ -1,5 +1,23 @@
 function App() {
-  return <h1>Hello from the App component!</h1>
+  const title = 'Blog post'
+  const body = 'This is my blog post'
+  const comments = [
+    { id: 1, text: 'Comment one' },
+    { id: 2, text: 'Comment two' },
+    { id: 3, text: 'Comment three' },
+  ]
+  return (
+    <div className='container'>
+      <h1>{title}</h1>
+      <p>{body}</p>
+      <p>Comments ({comments.length})</p>
+      <ul>
+        {comments.map((comment, index) => (
+          <li key={index}>{comment.text}</li>
+        ))}
+      </ul>
+    </div>
+  )
 }
 
 export default App
