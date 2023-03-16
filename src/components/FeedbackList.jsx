@@ -1,8 +1,15 @@
+import FeedbackItem from './FeedbackItem'
 function FeedbackList({feedback}) {
   if(!feedback || feedback.length === 0) 
-    return <p>No feedback yet</p>
+    return <p>No feedback yet.</p>
   return (
-    <div>List</div>
+    <div>
+      {feedback.map((item) => (
+        <FeedbackItem
+          key={item.id}
+          item={item} />
+      ))}
+    </div>
   )
 }
 
