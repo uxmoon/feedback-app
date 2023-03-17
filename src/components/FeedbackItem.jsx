@@ -1,9 +1,10 @@
+import Card from "./shared/Card"
 function FeedbackItem({item}) {
   return (
-    <div className="card">
+    <Card reverse>
       <div>{item.rating}</div>
       <p>{item.text}</p>
-    </div>
+    </Card>
   )
 }
 
