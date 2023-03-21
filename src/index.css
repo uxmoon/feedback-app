@@ -109,3 +109,8 @@ body {
   white-space: nowrap;
   border-width: 0;
 }
+
+button[type='submit']:disabled,
+button[type='button']:disabled {
+  cursor: not-allowed;
+}
