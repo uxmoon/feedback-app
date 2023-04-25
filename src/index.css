@@ -114,3 +114,10 @@ button[type='submit']:disabled,
 button[type='button']:disabled {
   cursor: not-allowed;
 }
+
+.container {
+  max-width: 65rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+}
