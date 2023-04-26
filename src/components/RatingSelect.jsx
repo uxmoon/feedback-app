@@ -5,12 +5,13 @@ function RatingSelect({ select }) {
 
   // handlers
   const handleChange = (event) => {
+    // convert to a number using the plus sign
     setSelected(+event.currentTarget.value)
     select(+event.currentTarget.value)
   }
 
   return (
-    <ul>
+    <ul className='rating'>
       <li>
         <input
           type='radio'
