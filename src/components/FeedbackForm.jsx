@@ -5,12 +5,14 @@ import Button from './shared/Button'
 import RatingSelect from './RatingSelect'
 
 function FeedbackForm() {
-  const { addFeedback } = useContext(FeedbackContext)
   // state
   const [text, setText] = useState('')
   const [btnDisabled, setBtnDisabled] = useState(true)
   const [message, setMessage] = useState('')
   const [rating, setRating] = useState(10)
+
+  // context
+  const { addFeedback } = useContext(FeedbackContext)
 
   // validation and set state
   const handleTextChange = (event) => {
