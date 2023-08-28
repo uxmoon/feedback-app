@@ -1,36 +1,34 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
 
 // Create context, Pascal Case
 const FeedbackContext = createContext()
 
 // Provider
 export const FeedbackProvider = ({ children }) => {
-  // data
-  const [feedback, setFeedback] = useState([
-    {
-      id: crypto.randomUUID(),
-      rating: 10,
-      text: 'This is feedback item 1',
-    },
-    {
-      id: crypto.randomUUID(),
-      rating: 8,
-      text: 'This is feedback item 2',
-    },
-    {
-      id: crypto.randomUUID(),
-      rating: 5,
-      text: 'This is feedback item 3',
-    },
-  ])
-
+  // state
+  const [isLoading, setIsLoading] = useState(true)
+  const [feedback, setFeedback] = useState([])
   const [feedbackEdit, setFeedbackEdit] = useState({
     item: {},
     edit: false,
   })
 
-  // functions
+  // side effects
+  useEffect(() => {
+    fetchFeedback()
+  }, [])
 
+  // fetch feedback
+  const fetchFeedback = async () => {
+    const response = await fetch(
+      'http://localhost:5000/feedback?_sort=id&_order=desc'
+    )
+    const data = await response.json()
+    setFeedback(data)
+    setIsLoading(false)
+  }
+
+  // functions
   const deleteFeedback = (id) => {
     if (window.confirm('Are you sure you want to delete?')) {
       setFeedback(feedback.filter((item) => item.id !== id))
@@ -69,6 +67,7 @@ export const FeedbackProvider = ({ children }) => {
       value={{
         feedback,
         feedbackEdit,
+        isLoading,
         deleteFeedback,
         addFeedback,
         editFeedback,
