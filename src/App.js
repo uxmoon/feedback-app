@@ -23,7 +23,7 @@ function App() {
       <Header text='Feedback UI' />
       <div className='container'>
         <FeedbackForm handleAdd={addFeedback} />
-        <FeedbackStats feedback={feedback} />
+        <FeedbackStats />
         <FeedbackList handleDelete={deleteFeedback} />
       </div>
     </FeedbackProvider>
